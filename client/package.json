@@ -30,6 +30,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "lint:css": "stylelint '**/*.css'"
   }
 }

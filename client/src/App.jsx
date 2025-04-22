@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import NavBar from './components/NavBar';
+import Layout from './components/Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Contacts from './pages/Contacts';
@@ -10,8 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 export default function App() {
   return (
     <Router>
-      <NavBar />
-      <div className="container mx-auto px-4 py-6">
+      <Layout>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -33,7 +32,7 @@ export default function App() {
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </div>
+      </Layout>
     </Router>
   );
 }
