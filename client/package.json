@@ -23,7 +23,9 @@
     "babel-jest": "^29.5.0",
     "@babel/core": "^7.22.0",
     "@babel/preset-env": "^7.22.0",
-    "@babel/preset-react": "^7.22.0"
+    "@babel/preset-react": "^7.22.0",
+    "stylelint": "^16.13.0",
+    "stylelint-config-recommended": "^15.0.0"
   },
   "scripts": {
     "dev": "vite",

@@ -46,6 +46,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
         working-directory: client
+      - name: Lint CSS
+        run: npm run lint:css
+        working-directory: client
       - name: Run Client Tests with Coverage
         run: npm run coverage
         working-directory: client

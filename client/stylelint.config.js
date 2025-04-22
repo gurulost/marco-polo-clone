@@ -1,4 +1,9 @@
 module.exports = {
   extends: ['stylelint-config-recommended'],
-  ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen'],
+  rules: {
+    'at-rule-no-unknown': [true, {
+      ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen']
+    }],
+    'at-rule-no-deprecated': [true, { ignoreAtRules: ['apply'] }]
+  }
 };
