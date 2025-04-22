@@ -29,6 +29,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   }
 }

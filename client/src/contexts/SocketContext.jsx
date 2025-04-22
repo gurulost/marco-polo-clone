@@ -15,7 +15,8 @@ export function SocketProvider({ children }) {
         Notification.requestPermission();
       }
       // Connect socket
-      const s = io(import.meta.env.VITE_SOCKET_URL);
+      // Use process.env in tests; Vite replaces import.meta.env at build time
+      const s = io(process.env.VITE_SOCKET_URL);
       s.on('connect', () => {
         s.emit('register', user.id);
       });

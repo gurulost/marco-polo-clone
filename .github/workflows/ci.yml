@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  server-tests:
+    name: Server Tests and Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Dependencies
+        run: npm install
+        working-directory: server
+      - name: Run Server Tests with Coverage
+        run: npm run coverage
+        working-directory: server
+      - name: Upload Server Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: server/coverage/lcov.info
+          flags: server
+          fail_ci_if_error: true
+      - name: Upload Server Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: server-coverage-report
+          path: server/coverage
+
+  client-tests:
+    name: Client Tests and Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Dependencies
+        run: npm install
+        working-directory: client
+      - name: Run Client Tests with Coverage
+        run: npm run coverage
+        working-directory: client
+      - name: Upload Client Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: client/coverage/lcov.info
+          flags: client
+          fail_ci_if_error: true
+      - name: Upload Client Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: client-coverage-report
+          path: client/coverage
